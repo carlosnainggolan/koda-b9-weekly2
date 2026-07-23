@@ -13,3 +13,18 @@ const getDataFromServer = (status, callback) => {
     callback(null,err)
   }
 }
+
+const processData = (products, err) => {
+  try {
+    if (err) {
+      throw err
+    }
+    console.log(products)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+let status = true
+
+getDataFromServer(status, processData)
