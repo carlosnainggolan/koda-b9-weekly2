@@ -1,3 +1,5 @@
+import { backToMain } from "../index.js"
+
 const processNumbers = (arr) => {
   let result = 1
   for (let i = 0; i < arr.length; i++) {
@@ -8,5 +10,9 @@ const processNumbers = (arr) => {
   console.log(result)
 }
 
-processNumbers([1, 2, 3, 4, 5])
-processNumbers([2, 4, 6, 8])
+export const question3 = async (rl) => {
+  const input = await rl.question(`Input array of number : `)
+  
+  processNumbers(input)
+  backToMain(rl)
+}

@@ -1,3 +1,5 @@
+import { backToMain } from "../index.js";
+
 const getDataFromServer = (status, callback) => {
   if (status) {
     setTimeout(() => {
@@ -25,6 +27,26 @@ const processData = (products, err) => {
   }
 }
 
-let status = true
+export const question5 = async (rl) => {
+  const input = await rl.question(`1. Berhasil get data (status: true)
+2. Gagal get data (status: false)
+Pilihan hasil get data? : `)
+    // let status;
+    if (input == 1) {
+      getDataFromServer(true, processData)
+    } else if (input == 2) {
+      getDataFromServer(false, processData)
+    } else {
+      console.clear()
+      console.log("Pilih antara 1 atau 2")
+      question5(rl)
+    }
+  
+  await asyncBack(rl)
+}
 
-getDataFromServer(status, processData)
+const asyncBack = async (rl) => {
+  setTimeout (() => {
+    backToMain(rl)
+  }, 3100)
+}
